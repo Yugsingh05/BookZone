@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { FlatList, Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import "../../global.css";
+import "../../../global.css"
 import DummyBooks from "../../lib/dummyBooks";
 import BookList from "../../components/BookList";
 
 export default function App() {
   return (
-    <View className="flex-1  bg-slate-800">
+    <View className="flex-1  bg-slate-800 py-5">
 
       <FlatList
       data={DummyBooks}
