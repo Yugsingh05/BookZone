@@ -3,6 +3,7 @@
     "name": "BookZone",
     "slug": "BookZone",
     "version": "1.0.0",
+    "scheme": "bookzone",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

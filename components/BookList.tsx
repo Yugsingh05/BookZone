@@ -17,7 +17,7 @@ type BookListProps = {
 const BookList : React.FC<BookListProps> = ({book}) => {
     console.log(book);
   return (
-    <View className="flex flex-row items-center p-4 ">
+    <View className="flex flex-row items-center px-4 ">
            <Image
              className="w-20 aspect-square"
              source={{ uri: book.thumbnail_url }}
