@@ -4,7 +4,10 @@ import { ActivityIndicator } from "react-native";
 import { useEffect } from "react";
 
 export default function ProtectedLayout() {
-  const { isSignedIn } = useAuth();
+  const { isSignedIn,isLoaded } = useAuth();
+  if(!isLoaded){
+    return <ActivityIndicator className="flex-1 " size={"large"}/>
+   }
 
 
  
