@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Pressable } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 
 type Book = {
     id : string,
@@ -17,7 +18,8 @@ type BookListProps = {
 const BookList : React.FC<BookListProps> = ({book}) => {
     // console.log(book);
   return (
-    <View className="flex flex-row items-center px-4 ">
+   <Link href={"/player"} asChild>
+    <Pressable className="flex flex-row items-center px-4 ">
            <Image
              className="w-20 aspect-square"
              source={{ uri: book.thumbnail_url }}
@@ -29,8 +31,8 @@ const BookList : React.FC<BookListProps> = ({book}) => {
            </View>
    
            <AntDesign name="playcircleo" size={24} color="white" />  
-         </View>
-   
+         </Pressable>
+   </Link>
   )
 }
 

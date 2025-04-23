@@ -1,5 +1,6 @@
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo'
 import { Redirect, Slot } from 'expo-router'
+import { ActivityIndicator } from 'react-native'
 
 export default function RootLayoutNav() {
 
