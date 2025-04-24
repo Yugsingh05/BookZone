@@ -7,12 +7,17 @@ import { Ionicons } from "@expo/vector-icons";
 import PlaybackBar from "@/components/PlayBackBar";
 import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
 import { usePlayer } from "@/providers/PlayerProvider";
+import { useEffect } from "react";
 
 export default function Player() {
-  const book = DummyBooks[0];
 
-  const {player} = usePlayer();
+  const {player,book,setBook} = usePlayer();
   const playerStatus = useAudioPlayerStatus(player);
+  
+
+  useEffect(() => {
+    player.play();
+  },[])
 
   return (
     <SafeAreaView className="flex-1  p-4 py-10 gap-4">

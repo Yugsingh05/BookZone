@@ -2,8 +2,9 @@ import React from 'react'
 import { View, Text, Image, Pressable } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import { Link } from 'expo-router';
+import { usePlayer } from '@/providers/PlayerProvider';
 
-type Book = {
+export type Book = {
     id : string,
     title : string,
     author : string,
@@ -16,10 +17,12 @@ type BookListProps = {
 }
 
 const BookList : React.FC<BookListProps> = ({book}) => {
+
+  const {setBook} = usePlayer();
     // console.log(book);
   return (
    <Link href={"/player"} asChild>
-    <Pressable className="flex flex-row items-center px-4 ">
+    <Pressable className="flex flex-row items-center px-4 " onPress={() => setBook(book)}>
            <Image
              className="w-20 aspect-square"
              source={{ uri: book.thumbnail_url }}

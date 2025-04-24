@@ -21,8 +21,8 @@ type BookListProps = {
 const FloatingPLayer = () => {
   // console.log(book);
 
-  const book = DummyBooks[0];
-  const {player} = usePlayer();
+ 
+  const {player,book,setBook} = usePlayer();
   const playingStatus = useAudioPlayerStatus(player);
   return (
     <Link href={"/player"} asChild>
