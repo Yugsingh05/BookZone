@@ -32,7 +32,7 @@ export default function Player() {
           {book.title}
         </Text>
 
-        <PlaybackBar currentTime={playerStatus.currentTime} duration={playerStatus.duration}/>
+        <PlaybackBar currentTime={playerStatus.currentTime} duration={playerStatus.duration} seekTo={(duration) => player.seekTo(duration)}/>
 
         <View className="flex-row items-center justify-between mt-8">
           <Ionicons name="play-skip-back" size={24} color="white" />
