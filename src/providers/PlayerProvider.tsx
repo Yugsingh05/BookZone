@@ -12,8 +12,8 @@ type PlayerContextType={
 export const PlayerContext = createContext<PlayerContextType | undefined>(undefined)
 
 export default function PlayerProvider({children} : PropsWithChildren){
-   const [book,setBook] = useState(DummyBooks[0])
-    const player = useAudioPlayer({uri : book.audio_url});
+   const [book,setBook] = useState()
+    const player = useAudioPlayer({uri : book?.audio_url});
 
     return (
         <PlayerContext.Provider value={{player , book,setBook}}>{children}</PlayerContext.Provider>

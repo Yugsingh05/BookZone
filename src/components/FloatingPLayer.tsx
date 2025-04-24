@@ -23,7 +23,10 @@ const FloatingPLayer = () => {
 
  
   const {player,book,setBook} = usePlayer();
+
+  if(!book) return null
   const playingStatus = useAudioPlayerStatus(player);
+  
   return (
     <Link href={"/player"} asChild>
       <Pressable className="flex flex-row items-center p-2 bg-slate-900 ">
@@ -39,7 +42,7 @@ const FloatingPLayer = () => {
 
         <AntDesign
           onPress={() => playingStatus.playing ? player.pause() : player.play()}
-          name={playingStatus.playing ? "pausecircleo" : "playcircleo"}
+          name={player.isBuffering ?  "loading1": playingStatus.playing ? "pausecircleo" : "playcircleo"}
           size={24}
           color="white"
         />
