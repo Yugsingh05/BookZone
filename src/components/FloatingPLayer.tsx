@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import DummyBooks from "@/lib/dummyBooks";
 import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import { usePlayer } from "@/providers/PlayerProvider";
 
 type Book = {
   id: string;
@@ -21,7 +22,7 @@ const FloatingPLayer = () => {
   // console.log(book);
 
   const book = DummyBooks[0];
-  const player = useAudioPlayer({ uri: book.audio_url });
+  const {player} = usePlayer();
   const playingStatus = useAudioPlayerStatus(player);
   return (
     <Link href={"/player"} asChild>

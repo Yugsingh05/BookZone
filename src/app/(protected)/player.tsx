@@ -6,11 +6,12 @@ import DummyBooks from "@/lib/dummyBooks";
 import { Ionicons } from "@expo/vector-icons";
 import PlaybackBar from "@/components/PlayBackBar";
 import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import { usePlayer } from "@/providers/PlayerProvider";
 
 export default function Player() {
   const book = DummyBooks[0];
 
-  const player = useAudioPlayer(book.audio_url);
+  const {player} = usePlayer();
   const playerStatus = useAudioPlayerStatus(player);
 
   return (
