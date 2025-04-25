@@ -2,10 +2,12 @@ import {  Tabs } from "expo-router"
 import {Ionicons} from "@expo/vector-icons"
 import { BottomTabBar } from "@react-navigation/bottom-tabs"
 import FloatingPLayer from "@/components/FloatingPLayer"
+import Toast from "react-native-toast-message"
 
 export default function TabsLayout() {
     
-    return <Tabs tabBar={(props) => (
+    return <>
+    <Tabs tabBar={(props) => (
         <>
         <FloatingPLayer/>
         <BottomTabBar {...props} /></>
@@ -21,4 +23,6 @@ export default function TabsLayout() {
             <Ionicons name="person" size={size} color={color} />
         }}/>
     </Tabs>
+   
+    </>
 }

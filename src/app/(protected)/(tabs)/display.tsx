@@ -4,6 +4,7 @@ import { useSupabase } from '@/lib/supabase'
 import { useQuery } from '@tanstack/react-query'
 import React, { useEffect } from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
+import Toast from 'react-native-toast-message'
 
 
 export default function Display() {
@@ -32,6 +33,7 @@ console.log(data);
     renderItem={({ item }) => <DiscoverBookList book={item} />}
     keyExtractor={(item) => item.id}
     />
+    <Toast/>
 </>
   )
 }

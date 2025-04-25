@@ -1,11 +1,12 @@
 import React from "react";
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable, Alert, ToastAndroid } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { usePlayer } from "@/providers/PlayerProvider";
 import { Book } from "./BookList";
 import { useSupabase } from "@/lib/supabase";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUser } from "@clerk/clerk-expo";
+import Toast from "react-native-toast-message";
 
 type DiscoverBookListProps = {
   book: Book;
@@ -15,20 +16,30 @@ const DiscoverBookList: React.FC<DiscoverBookListProps> = ({ book }) => {
   const { book: contextBook, setBook, player } = usePlayer();
 
   const {user} = useUser();
+  const queryClient = useQueryClient();
 
   const supabase = useSupabase();
-
   const { mutate } = useMutation({
-    mutationFn: async() =>
+    mutationFn: async () =>
       supabase
-        .from("user-books")
+        .from('user-books')
         .insert({
-          user_id: user?.id, 
+          user_id: user?.id,
           book_id: book.id,
           position: 0,
         })
         .throwOnError(),
+        onSuccess: () => {
+          Toast.show({
+            type: 'success',
+            text1: 'Success',
+            text2: 'Book added successfully',
+          });
+          queryClient.invalidateQueries({ queryKey: ['my-books'] });
+        },
+        
   });
+
 
   return (
     <Pressable
