@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import DummyBooks from "@/lib/dummyBooks";
-import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import {  useAudioPlayerStatus } from "expo-audio";
 import { usePlayer } from "@/providers/PlayerProvider";
 
 type Book = {
@@ -24,8 +23,11 @@ const FloatingPLayer = () => {
  
   const {player,book,setBook} = usePlayer();
 
-  if(!book) return null
+  if(!book) return null;
+
   const playingStatus = useAudioPlayerStatus(player);
+
+  if(!playingStatus) return null;
   
   return (
     <Link href={"/player"} asChild>

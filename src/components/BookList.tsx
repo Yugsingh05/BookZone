@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, Image, Pressable } from 'react-native'
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign , MaterialCommunityIcons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { usePlayer } from '@/providers/PlayerProvider';
 
@@ -25,7 +25,7 @@ const BookList : React.FC<BookListProps> = ({book}) => {
   // function checkPLaying () {
   //   return (contextBook?.id === book?.id && player.playing) ?  setIsPlaying(true) :  setIsPlaying(false)
   // }
-  //   // console.log(book);
+    // console.log(book);
   return (
    <Link href={"/player"} asChild>
     <Pressable className={`flex flex-row items-center px-4 ${contextBook?.id === book?.id ? "bg-green-900" :" bg-slate-900"}`} onPress={() => setBook(book)}>
@@ -39,7 +39,7 @@ const BookList : React.FC<BookListProps> = ({book}) => {
              <Text className="text-white text-md">{book.author}</Text>
            </View>
    
-           <AntDesign name={"playcircleo"} size={24} color="white" />  
+         { contextBook?.id === book?.id ? <MaterialCommunityIcons name="music" size={24} color="white" /> : <AntDesign name="playcircleo" size={24} color="white" /> }
          </Pressable>
    </Link>
   )
