@@ -20,7 +20,7 @@ export default function App() {
   if (error) {
     return <Text>Error: {error.message}</Text>;
   }
-  console.log(JSON.stringify(data?.data, null, 2));
+ 
 
   if(data?.data.length === 0){
     return (

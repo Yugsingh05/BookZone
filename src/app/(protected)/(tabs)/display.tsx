@@ -15,10 +15,8 @@ export default function Display() {
   queryFn: () => supabase.from('books').select().throwOnError(),
  });
 
-console.log(data);
-
  if(isLoading){
-  return <ActivityIndicator/>
+  return <ActivityIndicator size={"large"} className='flex-1' />
  }
 
  if(error){
